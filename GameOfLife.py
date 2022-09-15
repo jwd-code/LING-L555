@@ -1,17 +1,6 @@
 import random
 
 
-main_grid = [[1, 0, 1, 0, 1, 0, 0],
-            [0, 1, 0, 0, 0, 0, 0],
-            [0, 1, 0, 1, 0, 0, 0],
-            [0, 0, 0, 0, 1, 1, 1]]
-
-
-
-
-
-
-
 
 def getLiveNeighborCount(grid, row_ind, col_ind):
     #Top left corner
