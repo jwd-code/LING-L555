@@ -2,6 +2,9 @@ import random
 
 
 
+
+
+
 def getLiveNeighborCount(grid, row_ind, col_ind):
     #Top left corner
     if row_ind == 0 and col_ind == 0:
@@ -94,8 +97,8 @@ def updateGrid(grid, row_ind, col_ind, live_neighbors_count):
         updated_grid[row_ind][col_ind] = 0
         #print("Died by underpopulation")
 
-    elif old_cell == 1 and (live_neighbors_count == 2 or live_neighbors_count == 3):
-        pass
+    elif old_cell == 1 and live_neighbors_count == 2 or live_neighbors_count == 3:
+        updated_grid[row_ind][col_ind] = 1
 
     elif old_cell == 1 and live_neighbors_count > 3:
         updated_grid[row_ind][col_ind] = 0
@@ -123,28 +126,6 @@ def playGOL():
     the_grid = createGrid()
     gen_number = int(input("How many generations would you like to run?"))
     print("Starting grid:")
-    print("--------------")
-    for row in the_grid:
-        print(row)
-    for i in range(gen_number):
-        for row in the_grid:
-            rind = the_grid.index(row)
-            cind = -1
-            for cell in row:
-                cind +=1
-                live_count = getLiveNeighborCount(the_grid, row_ind=rind, col_ind=cind)
-                #print("Neighbor count:", live_count)
-                updated_grid = updateGrid(the_grid, rind, cind, live_count)
-    
-        
-        for row in updated_grid:
-            print(row)
-        print('------------')
-        
-def playGOL2():
-    the_grid = createGrid()
-    gen_number = int(input("How many generations would you like to run?"))
-    print("Starting grid:")
     for row in the_grid:
         print(row)
     print("--------------")
@@ -159,7 +140,10 @@ def playGOL2():
                 live_count = getLiveNeighborCount(the_grid, row_ind=rind, col_ind=cind)
                 #print("Neighbor count:", live_count)
                 updated_grid = updateGrid(the_grid, rind, cind, live_count)
+            updated_grid = the_grid
         gen_count += 1
+            
+        
         print("Generation:", gen_count)
         for row in updated_grid:
             print(row)
@@ -168,9 +152,8 @@ def playGOL2():
 
 
 
-playGOL2()
+playGOL()
     
-
     
 
 
